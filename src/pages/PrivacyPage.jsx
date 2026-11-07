@@ -25,7 +25,7 @@ export default function PrivacyPage() {
     },
     {
       title: '5. Your Rights',
-      content: `You have the right to:\n\n• Access: View all personal data we hold about you\n• Correction: Update inaccurate or incomplete information\n• Deletion: Request deletion of your account and associated data\n• Portability: Download your records in their original format\n• Revocation: Revoke any previously granted data sharing permissions\n• Restriction: Limit how we process your information\n\nTo exercise these rights, contact privacy@medichain.health.`,
+      content: `You have the right to:\n\n• Access: View all personal data we hold about you\n• Correction: Update inaccurate or incomplete information\n• Deletion: Request deletion of your account and associated data\n• Portability: Download your records in their original format\n• Revocation: Revoke any previously granted data sharing permissions\n• Restriction: Limit how we process your information\n\nTo exercise these rights, contact privacy@grantx.health.`,
     },
     {
       title: '6. Data Retention',
@@ -33,11 +33,11 @@ export default function PrivacyPage() {
     },
     {
       title: '7. Children\'s Privacy',
-      content: `MediChain is not intended for use by individuals under 18 years of age. We do not knowingly collect data from children. If you believe a child has provided us with personal information, please contact us immediately at privacy@medichain.health and we will delete it.`,
+      content: `GrantX is not intended for use by individuals under 18 years of age. We do not knowingly collect data from children. If you believe a child has provided us with personal information, please contact us immediately at privacy@grantx.health and we will delete it.`,
     },
     {
       title: '8. Cookie Policy',
-      content: `MediChain uses minimal cookies and local storage:\n\n• Authentication Tokens: Stored in localStorage for session management\n• No Tracking Cookies: We do not use advertising or analytics tracking cookies\n• No Third-Party Trackers: No analytics scripts, pixel trackers, or social media widgets are embedded`,
+      content: `GrantX uses minimal cookies and local storage:\n\n• Authentication Tokens: Stored in localStorage for session management\n• No Tracking Cookies: We do not use advertising or analytics tracking cookies\n• No Third-Party Trackers: No analytics scripts, pixel trackers, or social media widgets are embedded`,
     },
     {
       title: '9. Changes to This Policy',
@@ -45,7 +45,7 @@ export default function PrivacyPage() {
     },
     {
       title: '10. Contact Us',
-      content: `Data Protection Officer\nMediChain Technologies Pvt. Ltd.\nMumbai, Maharashtra, India\n\nPrivacy inquiries: privacy@medichain.health\nGeneral support: support@medichain.health`,
+      content: `Data Protection Officer\nGrantX Technologies Pvt. Ltd.\nMumbai, Maharashtra, India\n\nPrivacy inquiries: privacy@grantx.health\nGeneral support: support@grantx.health`,
     },
   ]
 
@@ -54,7 +54,7 @@ export default function PrivacyPage() {
       <nav className="glass border-b border-white/20 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center gap-4">
           <Link to="/" className="btn-ghost !px-3"><ArrowLeft size={18} /></Link>
-          <img src="/logo.png" alt="MediChain" className="h-7" />
+          <img src="/logo.svg" alt="GrantX" className="h-7" />
         </div>
       </nav>
 

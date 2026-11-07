@@ -9,11 +9,11 @@ export default function TermsPage() {
   const sections = [
     {
       title: '1. Acceptance of Terms',
-      content: `By accessing or using the MediChain platform ("Service"), operated by MediChain Technologies Pvt. Ltd. ("Company", "we", "us"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the Service. These Terms apply to all users, including patients, healthcare providers ("Doctors"), and administrators.`,
+      content: `By accessing or using the GrantX platform ("Service"), operated by GrantX Technologies Pvt. Ltd. ("Company", "we", "us"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the Service. These Terms apply to all users, including patients, healthcare providers ("Doctors"), and administrators.`,
     },
     {
       title: '2. Description of Service',
-      content: `MediChain is a health data management platform that allows patients to upload, encrypt, store, and selectively share medical records with authorized healthcare providers. The Service includes:\n\n• Encrypted medical record storage using AES-256-CBC encryption\n• Decentralized file storage via IPFS (InterPlanetary File System)\n• Doctor discovery and connection management\n• Appointment scheduling and management\n• Selective record sharing with granular access controls\n• Email notifications for appointment confirmations`,
+      content: `GrantX is a health data management platform that allows patients to upload, encrypt, store, and selectively share medical records with authorized healthcare providers. The Service includes:\n\n• Encrypted medical record storage using AES-256-CBC encryption\n• Decentralized file storage via IPFS (InterPlanetary File System)\n• Doctor discovery and connection management\n• Appointment scheduling and management\n• Selective record sharing with granular access controls\n• Email notifications for appointment confirmations`,
     },
     {
       title: '3. User Accounts & Registration',
@@ -21,7 +21,7 @@ export default function TermsPage() {
     },
     {
       title: '4. Medical Disclaimer',
-      content: `MediChain is a data management platform, NOT a medical service provider. The Service does not provide medical advice, diagnoses, or treatment. Doctor profiles and information displayed are self-reported by healthcare providers. We do not verify medical credentials, licenses, or qualifications beyond basic profile validation.\n\nAlways seek the advice of qualified healthcare professionals regarding medical conditions. Never disregard professional medical advice or delay seeking it because of information accessed through our platform.`,
+      content: `GrantX is a data management platform, NOT a medical service provider. The Service does not provide medical advice, diagnoses, or treatment. Doctor profiles and information displayed are self-reported by healthcare providers. We do not verify medical credentials, licenses, or qualifications beyond basic profile validation.\n\nAlways seek the advice of qualified healthcare professionals regarding medical conditions. Never disregard professional medical advice or delay seeking it because of information accessed through our platform.`,
     },
     {
       title: '5. Data Privacy & Encryption',
@@ -29,15 +29,15 @@ export default function TermsPage() {
     },
     {
       title: '6. User Responsibilities',
-      content: `As a user of MediChain, you agree to:\n\n• Use the Service only for lawful purposes\n• Not upload malicious files, viruses, or harmful content\n• Not attempt to breach, circumvent, or test the security of the platform\n• Not impersonate healthcare providers or other users\n• Not use automated tools to scrape, harvest, or collect data from the Service\n• Not interfere with or disrupt the Service or its infrastructure\n• Comply with all applicable local, state, national, and international laws`,
+      content: `As a user of GrantX, you agree to:\n\n• Use the Service only for lawful purposes\n• Not upload malicious files, viruses, or harmful content\n• Not attempt to breach, circumvent, or test the security of the platform\n• Not impersonate healthcare providers or other users\n• Not use automated tools to scrape, harvest, or collect data from the Service\n• Not interfere with or disrupt the Service or its infrastructure\n• Comply with all applicable local, state, national, and international laws`,
     },
     {
       title: '7. Healthcare Provider Terms',
-      content: `Doctors and healthcare providers who register on MediChain additionally agree to:\n\n• Provide accurate professional information including name, specialization, and qualifications\n• Handle all patient data received through the platform in accordance with applicable medical privacy laws\n• Not download, copy, or redistribute patient records beyond the scope of treatment\n• Respond to appointment requests in a timely manner\n• Maintain professional standards of care in all platform interactions`,
+      content: `Doctors and healthcare providers who register on GrantX additionally agree to:\n\n• Provide accurate professional information including name, specialization, and qualifications\n• Handle all patient data received through the platform in accordance with applicable medical privacy laws\n• Not download, copy, or redistribute patient records beyond the scope of treatment\n• Respond to appointment requests in a timely manner\n• Maintain professional standards of care in all platform interactions`,
     },
     {
       title: '8. Intellectual Property',
-      content: `The Service, including its design, features, code, logos ("MediChain", "Health on Chain"), and branding, is owned by MediChain Technologies Pvt. Ltd. and is protected by intellectual property laws.\n\nYou retain ownership of all medical records and content you upload. By uploading content, you grant us a limited license to store, process, encrypt, and transmit your data solely for the purpose of providing the Service.`,
+      content: `The Service, including its design, features, code, logos ("GrantX", "Health on Chain"), and branding, is owned by GrantX Technologies Pvt. Ltd. and is protected by intellectual property laws.\n\nYou retain ownership of all medical records and content you upload. By uploading content, you grant us a limited license to store, process, encrypt, and transmit your data solely for the purpose of providing the Service.`,
     },
     {
       title: '9. Third-Party Services',
@@ -53,7 +53,7 @@ export default function TermsPage() {
     },
     {
       title: '12. Indemnification',
-      content: `You agree to indemnify and hold harmless MediChain Technologies Pvt. Ltd., its officers, directors, employees, and agents from any claims, damages, losses, or expenses (including legal fees) arising from your use of the Service, violation of these Terms, or infringement of any third-party rights.`,
+      content: `You agree to indemnify and hold harmless GrantX Technologies Pvt. Ltd., its officers, directors, employees, and agents from any claims, damages, losses, or expenses (including legal fees) arising from your use of the Service, violation of these Terms, or infringement of any third-party rights.`,
     },
     {
       title: '13. Account Termination',
@@ -69,7 +69,7 @@ export default function TermsPage() {
     },
     {
       title: '16. Contact Information',
-      content: `For questions about these Terms, contact us:\n\nMediChain Technologies Pvt. Ltd.\nEmail: legal@medichain.health\nAddress: Mumbai, Maharashtra, India\n\nFor data privacy concerns: privacy@medichain.health\nFor security reports: security@medichain.health`,
+      content: `For questions about these Terms, contact us:\n\nGrantX Technologies Pvt. Ltd.\nEmail: legal@grantx.health\nAddress: Mumbai, Maharashtra, India\n\nFor data privacy concerns: privacy@grantx.health\nFor security reports: security@grantx.health`,
     },
   ]
 
@@ -78,7 +78,7 @@ export default function TermsPage() {
       <nav className="glass border-b border-white/20 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center gap-4">
           <Link to="/" className="btn-ghost !px-3"><ArrowLeft size={18} /></Link>
-          <img src="/logo.png" alt="MediChain" className="h-7" />
+          <img src="/logo.svg" alt="GrantX" className="h-7" />
         </div>
       </nav>
 

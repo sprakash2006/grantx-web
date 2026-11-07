@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/logo.png" alt="MediChain" className="h-8 brightness-0 invert" />
+              <img src="/logo.svg" alt="GrantX" className="h-8 brightness-0 invert" />
             </div>
             <p className="text-white/50 text-sm leading-relaxed max-w-sm">
               Secure, encrypted medical records platform. Your health data belongs to you — share it on your terms.
@@ -43,7 +43,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-white/30">&copy; {new Date().getFullYear()} MediChain Technologies Pvt. Ltd. All rights reserved.</p>
+          <p className="text-xs text-white/30">&copy; {new Date().getFullYear()} GrantX Technologies Pvt. Ltd. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <span className="text-xs text-white/30">Made in India</span>
           </div>

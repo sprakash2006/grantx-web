@@ -11,7 +11,7 @@ export default function Logo({ size = 'md', linkTo, className = '' }) {
 
   const content = (
     <div className={`flex items-center gap-2.5 ${className}`}>
-      <img src="/logo.png" alt="MediChain" className={`${s.img} w-auto object-contain`} />
+      <img src="/logo.svg" alt="GrantX" className={`${s.img} w-auto object-contain`} />
     </div>
   )
 

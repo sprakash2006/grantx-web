@@ -27,7 +27,7 @@ export default function LandingPage() {
       <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/20">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2.5">
-            <img src="/logo.png" alt="MediChain" className="h-8" />
+            <img src="/logo.svg" alt="GrantX" className="h-8" />
           </Link>
           <div className="flex items-center gap-3">
             <Link to="/login" className="text-sm font-semibold text-txt-secondary hover:text-primary transition px-4 py-2">Log In</Link>
@@ -66,7 +66,7 @@ export default function LandingPage() {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
             className="mt-6 text-lg sm:text-xl text-txt-secondary max-w-2xl mx-auto leading-relaxed text-balance">
-            MediChain encrypts your medical records with military-grade AES-256 encryption and stores them on decentralized IPFS. Share securely with doctors — on your terms.
+            GrantX encrypts your medical records with military-grade AES-256 encryption and stores them on decentralized IPFS. Share securely with doctors — on your terms.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}
@@ -228,7 +228,7 @@ export default function LandingPage() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-txt-primary text-balance">
             Ready to take control of your health records?
           </h2>
-          <p className="text-txt-secondary mt-4 text-lg">Join thousands of patients and doctors already on MediChain.</p>
+          <p className="text-txt-secondary mt-4 text-lg">Join thousands of patients and doctors already on GrantX.</p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/signup" className="btn-primary !px-8 !py-4 text-base shadow-lg shadow-primary/25">
               Create Free Account <ArrowRight size={18} />

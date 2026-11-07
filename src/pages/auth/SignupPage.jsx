@@ -86,7 +86,7 @@ export default function SignupPage() {
 
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }} className="relative z-10 text-center px-8 py-16 max-w-md">
-          <img src="/logo.png" alt="MediChain" className="h-14 mx-auto mb-8 brightness-0 invert" />
+          <img src="/logo.svg" alt="GrantX" className="h-14 mx-auto mb-8 brightness-0 invert" />
           <h1 className="text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
             Join the Future of Health Records
           </h1>
@@ -107,13 +107,13 @@ export default function SignupPage() {
         <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }} className="w-full max-w-sm">
           <div className="lg:hidden mb-6">
-            <img src="/logo.png" alt="MediChain" className="h-8" />
+            <img src="/logo.svg" alt="GrantX" className="h-8" />
           </div>
           <h2 className="text-3xl font-extrabold text-txt-primary">
             {isGoogleFlow ? 'Complete Setup' : 'Create Account'}
           </h2>
           <p className="text-txt-secondary mt-2 mb-6">
-            {isGoogleFlow ? 'Choose your role to get started' : 'Join thousands on MediChain'}
+            {isGoogleFlow ? 'Choose your role to get started' : 'Join thousands on GrantX'}
           </p>
 
           {/* Role selector */}

@@ -9,7 +9,7 @@ export default function ContactPage() {
       <nav className="glass border-b border-white/20 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center gap-4">
           <Link to="/" className="btn-ghost !px-3"><ArrowLeft size={18} /></Link>
-          <img src="/logo.png" alt="MediChain" className="h-7" />
+          <img src="/logo.svg" alt="GrantX" className="h-7" />
         </div>
       </nav>
 
@@ -17,15 +17,15 @@ export default function ContactPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <span className="section-heading text-primary">Get in Touch</span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-txt-primary mt-3">Contact Us</h1>
-          <p className="text-txt-secondary mt-3 max-w-lg">Have questions about MediChain? We'd love to hear from you.</p>
+          <p className="text-txt-secondary mt-3 max-w-lg">Have questions about GrantX? We'd love to hear from you.</p>
         </motion.div>
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
           {[
-            { icon: Mail, title: 'Email', detail: 'support@medichain.health', sub: 'Response within 24 hours' },
+            { icon: Mail, title: 'Email', detail: 'support@grantx.health', sub: 'Response within 24 hours' },
             { icon: MapPin, title: 'Office', detail: 'Mumbai, Maharashtra', sub: 'India' },
             { icon: Phone, title: 'Phone', detail: '+91 (022) XXXX-XXXX', sub: 'Mon-Fri 9AM-6PM IST' },
-            { icon: MessageSquare, title: 'Feedback', detail: 'feedback@medichain.health', sub: 'We value your suggestions' },
+            { icon: MessageSquare, title: 'Feedback', detail: 'feedback@grantx.health', sub: 'We value your suggestions' },
           ].map(({ icon: Icon, title, detail, sub }, i) => (
             <motion.div key={title} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 + i * 0.08 }}
               className="card !p-6">

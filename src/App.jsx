@@ -32,7 +32,7 @@ export default function App() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="flex flex-col items-center gap-4">
-          <img src="/logo.png" alt="MediChain" className="h-10 animate-pulse" />
+          <img src="/logo.svg" alt="GrantX" className="h-10 animate-pulse" />
           <div className="spinner" />
         </div>
       </div>
