@@ -6,6 +6,9 @@ const ToastContext = createContext(null)
 
 let toastId = 0
 
+/** How long an Undo toast stays up before the action is final. */
+export const UNDO_MS = 6000
+
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([])
 
@@ -13,16 +16,19 @@ export function ToastProvider({ children }) {
     setToasts(prev => prev.filter(t => t.id !== id))
   }, [])
 
-  const add = useCallback((type, message) => {
+  const add = useCallback((type, message, { duration = 4000, action } = {}) => {
     const id = ++toastId
-    setToasts(prev => [...prev, { id, type, message }])
-    setTimeout(() => remove(id), 4000)
+    setToasts(prev => [...prev, { id, type, message, action }])
+    setTimeout(() => remove(id), duration)
+    return id
   }, [remove])
 
   const toast = {
     success: (msg) => add('success', msg),
     error: (msg) => add('error', msg),
     info: (msg) => add('info', msg),
+    /** Toast with an Undo button; `onUndo` runs if it's clicked before `duration` ms. */
+    undo: (msg, onUndo, duration = UNDO_MS) => add('info', msg, { duration, action: { label: 'Undo', onClick: onUndo } }),
   }
 
   const icons = { success: CheckCircle, error: XCircle, info: Info }
@@ -49,6 +55,12 @@ export function ToastProvider({ children }) {
               >
                 <Icon size={18} className="flex-shrink-0" />
                 <span className="text-sm font-medium flex-1">{t.message}</span>
+                {t.action && (
+                  <button onClick={() => { remove(t.id); t.action.onClick() }}
+                    className="flex-shrink-0 px-3 py-1 rounded-lg bg-white/70 text-sm font-bold text-primary hover:bg-white transition-colors">
+                    {t.action.label}
+                  </button>
+                )}
                 <button onClick={() => remove(t.id)} className="flex-shrink-0 opacity-60 hover:opacity-100">
                   <X size={14} />
                 </button>

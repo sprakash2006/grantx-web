@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useAuth } from '../../contexts/AuthContext'
 import { getMyStats } from '../../services/profileService'
 import { getMyAcceptedDoctors } from '../../services/doctorRequestService'
+import SharedAccessPanel from '../../components/SharedAccessPanel'
 import {
   Upload, FileText, Share2, Shield, Users, Heart, Stethoscope,
   Brain, Eye, Baby, Activity, ArrowRight, Sparkles
@@ -75,14 +76,16 @@ export default function PatientDashboard() {
         ].map(({ to, icon: Icon, label, gradient, shadow }, i) => (
           <motion.div key={to} custom={i} variants={fadeUp} initial="hidden" animate="visible">
             <Link to={to} className="card flex flex-col items-center gap-3 py-6 group">
-              <div className={`w-13 h-13 rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg ${shadow} group-hover:scale-110 group-hover:shadow-xl transition-all duration-500`}>
-                <Icon size={22} className="text-white" />
+              <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg ${shadow} group-hover:scale-110 group-hover:shadow-xl transition-all duration-500`}>
+                <Icon size={18} className="text-white" />
               </div>
               <span className="text-sm font-bold text-txt-primary">{label}</span>
             </Link>
           </motion.div>
         ))}
       </div>
+
+      <SharedAccessPanel />
 
       {/* Specialties */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }} className="mt-8">
@@ -112,7 +115,10 @@ export default function PatientDashboard() {
       {doctors.length > 0 && (
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="mt-8">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-txt-primary">Your Doctors</h2>
+            <div>
+              <h2 className="text-lg font-bold text-txt-primary">Connected doctors</h2>
+              <p className="text-xs text-txt-secondary mt-0.5">Doctors you're connected with. Record access is shown above.</p>
+            </div>
             <Link to="/patient/find-doctors?tab=my" className="text-sm text-primary font-semibold flex items-center gap-1 hover:gap-2 transition-all">
               See all <ArrowRight size={14} />
             </Link>

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../contexts/AuthContext'
 import {
   LayoutDashboard, FileText, Upload, Search, User,
-  Stethoscope, Menu, X, LogOut
+  Stethoscope, Menu, X, LogOut, History
 } from 'lucide-react'
 
 const patientLinks = [
@@ -12,6 +12,7 @@ const patientLinks = [
   { to: '/patient/records', label: 'Records', icon: FileText },
   { to: '/patient/upload', label: 'Upload', icon: Upload },
   { to: '/patient/find-doctors', label: 'Doctors', icon: Search },
+  { to: '/patient/activity', label: 'Access Log', icon: History },
   { to: '/patient/profile', label: 'Profile', icon: User },
 ]
 

@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { listMyRecords, downloadRecord, deleteRecord } from '../../services/recordsService'
 import { useToast } from '../../components/Toast'
+import AccessLogModal from '../../components/AccessLogModal'
+import { useDeferredAction } from '../../lib/useDeferredAction'
 import { RECORD_CATEGORIES } from '../../data/constants'
-import { FileText, Download, Trash2, Upload, File, Image, FileSpreadsheet, Filter, Loader, Shield } from 'lucide-react'
+import { FileText, Download, Trash2, Upload, File, Image, FileSpreadsheet, Filter, Loader, Shield, History } from 'lucide-react'
 
 function fileIcon(mime) {
   if (!mime) return File
@@ -26,7 +28,9 @@ export default function RecordsPage() {
   const [loading, setLoading] = useState(true)
   const [downloading, setDownloading] = useState(null)
   const [filter, setFilter] = useState('All')
+  const [historyFor, setHistoryFor] = useState(null)
   const toast = useToast()
+  const deferAction = useDeferredAction()
 
   useEffect(() => {
     listMyRecords().then(setRecords).catch(() => toast.error('Failed to load records')).finally(() => setLoading(false))
@@ -48,13 +52,17 @@ export default function RecordsPage() {
     }
   }
 
-  async function handleDelete(id) {
-    if (!confirm('Delete this record? This cannot be undone.')) return
-    try {
-      await deleteRecord(id)
-      setRecords(prev => prev.filter(r => r.id !== id))
-      toast.success('Record deleted')
-    } catch { toast.error('Failed to delete') }
+  function handleDelete(record) {
+    const index = records.findIndex(r => r.id === record.id)
+    deferAction({
+      message: `"${record.title}" deleted`,
+      apply: () => setRecords(prev => prev.filter(r => r.id !== record.id)),
+      revert: () => setRecords(prev => prev.some(r => r.id === record.id)
+        ? prev
+        : [...prev.slice(0, index), record, ...prev.slice(index)]),
+      commit: () => deleteRecord(record.id),
+      errorMessage: 'Failed to delete',
+    })
   }
 
   const filtered = filter === 'All' ? records : records.filter(r => r.category === filter)
@@ -117,12 +125,17 @@ export default function RecordsPage() {
                     </div>
                   </div>
                   <div className="flex gap-2">
+                    <motion.button whileTap={{ scale: 0.9 }} onClick={() => setHistoryFor(record)}
+                      title="Access history" aria-label={`Access history for ${record.title}`}
+                      className="w-9 h-9 rounded-xl bg-surface text-txt-secondary flex items-center justify-center hover:bg-primary-tint hover:text-primary transition-all duration-300">
+                      <History size={14} />
+                    </motion.button>
                     <motion.button whileTap={{ scale: 0.9 }} onClick={() => handleDownload(record)}
                       disabled={downloading === record.id}
                       className="w-9 h-9 rounded-xl bg-primary-tint text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300">
                       {downloading === record.id ? <Loader size={14} className="animate-spin" /> : <Download size={14} />}
                     </motion.button>
-                    <motion.button whileTap={{ scale: 0.9 }} onClick={() => handleDelete(record.id)}
+                    <motion.button whileTap={{ scale: 0.9 }} onClick={() => handleDelete(record)}
                       className="w-9 h-9 rounded-xl bg-red-50 text-accent-red flex items-center justify-center hover:bg-red-100 transition-all duration-300">
                       <Trash2 size={14} />
                     </motion.button>
@@ -133,6 +146,8 @@ export default function RecordsPage() {
           </AnimatePresence>
         </div>
       )}
+
+      {historyFor && <AccessLogModal record={historyFor} onClose={() => setHistoryFor(null)} />}
     </div>
   )
 }

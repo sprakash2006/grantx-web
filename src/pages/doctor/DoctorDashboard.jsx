@@ -6,6 +6,7 @@ import { getPendingAppointments, confirmAppointment, declineAppointment } from '
 import { getMyDoctorProfile } from '../../services/doctorService'
 import { useAuth } from '../../contexts/AuthContext'
 import { useToast } from '../../components/Toast'
+import { useDeferredAction } from '../../lib/useDeferredAction'
 import {
   Users, Calendar, UserCheck, Clock, Check, X, Mail,
   FileText, ChevronRight, Stethoscope, AlertCircle, Sparkles, Edit3, Activity
@@ -23,6 +24,7 @@ export default function DoctorDashboard() {
   const [doctorProfile, setDoctorProfile] = useState(null)
   const [loading, setLoading] = useState(true)
   const toast = useToast()
+  const deferAction = useDeferredAction()
 
   useEffect(() => { loadAll() }, [])
 
@@ -45,6 +47,18 @@ export default function DoctorDashboard() {
   }
 
   async function handleRequest(id, status) {
+    if (status === 'rejected') {
+      const req = requests.find(r => r.id === id)
+      const index = requests.indexOf(req)
+      deferAction({
+        message: `Declined ${req?.patient?.full_name || 'request'}`,
+        apply: () => setRequests(prev => prev.filter(r => r.id !== id)),
+        revert: () => setRequests(prev => prev.some(r => r.id === id) ? prev : [...prev.slice(0, index), req, ...prev.slice(index)]),
+        commit: () => setRequestStatus(id, 'rejected'),
+        errorMessage: 'Action failed',
+      })
+      return
+    }
     try {
       await setRequestStatus(id, status)
       setRequests(prev => prev.filter(r => r.id !== id))
@@ -72,12 +86,16 @@ export default function DoctorDashboard() {
     } catch { toast.error('Failed to confirm') }
   }
 
-  async function handleDecline(id) {
-    try {
-      await declineAppointment(id)
-      setAppointments(prev => prev.filter(a => a.id !== id))
-      toast.success('Appointment declined')
-    } catch { toast.error('Failed to decline') }
+  function handleDecline(id) {
+    const appt = appointments.find(a => a.id === id)
+    const index = appointments.indexOf(appt)
+    deferAction({
+      message: 'Appointment declined',
+      apply: () => setAppointments(prev => prev.filter(a => a.id !== id)),
+      revert: () => setAppointments(prev => prev.some(a => a.id === id) ? prev : [...prev.slice(0, index), appt, ...prev.slice(index)]),
+      commit: () => declineAppointment(id),
+      errorMessage: 'Failed to decline',
+    })
   }
 
   if (loading) return <div className="min-h-[60vh] flex items-center justify-center"><div className="spinner" /></div>

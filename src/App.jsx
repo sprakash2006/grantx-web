@@ -18,6 +18,7 @@ import DoctorProfileView from './pages/patient/DoctorProfileView'
 import BookAppointment from './pages/patient/BookAppointment'
 import SendRecordsPage from './pages/patient/SendRecordsPage'
 import ProfilePage from './pages/patient/ProfilePage'
+import ActivityPage from './pages/patient/ActivityPage'
 import EditProfilePage from './pages/patient/EditProfilePage'
 import DoctorDashboard from './pages/doctor/DoctorDashboard'
 import DoctorProfileEdit from './pages/doctor/DoctorProfileEdit'
@@ -62,6 +63,7 @@ export default function App() {
           <Route path="/patient/doctor/:doctorId" element={<PrivateRoute roles={['patient']}><DoctorProfileView /></PrivateRoute>} />
           <Route path="/patient/book-appointment/:doctorId" element={<PrivateRoute roles={['patient']}><BookAppointment /></PrivateRoute>} />
           <Route path="/patient/send-records/:doctorId" element={<PrivateRoute roles={['patient']}><SendRecordsPage /></PrivateRoute>} />
+          <Route path="/patient/activity" element={<PrivateRoute roles={['patient']}><ActivityPage /></PrivateRoute>} />
           <Route path="/patient/profile" element={<PrivateRoute roles={['patient']}><ProfilePage /></PrivateRoute>} />
           <Route path="/patient/edit-profile" element={<PrivateRoute roles={['patient']}><EditProfilePage /></PrivateRoute>} />
 

@@ -1,11 +1,22 @@
 import { api } from '../lib/api'
 
-export async function shareRecords({ recordIds, doctorId }) {
-  return api.post('/api/sharing/share', { recordIds, doctorId })
+/** expiresAt: ISO string, or null for access that never expires. */
+export async function shareRecords({ recordIds, doctorId, expiresAt = null }) {
+  return api.post('/api/sharing/share', { recordIds, doctorId, expiresAt })
+}
+
+/** Everything the patient currently shares, with doctor details and expiry. */
+export async function getMyShares() {
+  return api.get('/api/sharing/mine')
 }
 
 export async function revokeShare(recordId, doctorId) {
   return api.post('/api/sharing/revoke', { recordId, doctorId })
+}
+
+/** Every grant, revoke, expiry and doctor view across the patient's records, newest first. */
+export async function getAccessActivity() {
+  return api.get('/api/sharing/activity')
 }
 
 export async function getSharedRecordIds(doctorId) {

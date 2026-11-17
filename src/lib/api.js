@@ -5,7 +5,7 @@ function authHeaders() {
   return token ? { Authorization: `Bearer ${token}` } : {}
 }
 
-async function request(method, path, { body, params, file } = {}) {
+async function request(method, path, { body, params, file, keepalive } = {}) {
   let url = `${BASE}${path}`
   if (params) {
     const q = new URLSearchParams(params).toString()
@@ -25,7 +25,8 @@ async function request(method, path, { body, params, file } = {}) {
     fetchBody = JSON.stringify(body)
   }
 
-  const res = await fetch(url, { method, headers, body: fetchBody })
+  // keepalive lets a request finish while the page is closing.
+  const res = await fetch(url, { method, headers, body: fetchBody, keepalive })
 
   if (!res.ok) {
     const data = await res.json().catch(() => ({}))
@@ -39,7 +40,7 @@ async function request(method, path, { body, params, file } = {}) {
 
 export const api = {
   get: (path, params) => request('GET', path, { params }),
-  post: (path, body) => request('POST', path, { body }),
+  post: (path, body, opts = {}) => request('POST', path, { body, ...opts }),
   put: (path, body) => request('PUT', path, { body }),
   patch: (path, body) => request('PATCH', path, { body }),
   delete: (path) => request('DELETE', path),
@@ -50,8 +51,11 @@ export const api = {
   },
   download: async (path) => {
     const url = `${BASE}${path}`
-    const res = await fetch(url, { headers: authHeaders() })
-    if (!res.ok) throw new Error('Download failed')
+    const res = await fetch(url, { headers: authHeaders(), cache: 'no-store' })
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}))
+      throw new Error(data.error || 'Download failed')
+    }
     return res.blob()
   },
 }
