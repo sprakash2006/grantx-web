@@ -120,12 +120,11 @@ export default function AccessLogModal({ record, onClose }) {
                         )}
                         <p className="text-[11px] text-txt-tertiary mt-0.5">
                           {new Date(e.timestamp).toLocaleString('en-IN', DATE_FORMAT)}
-                          {' · '}
                           {e.blockNumber != null
-                            ? `block ${e.blockNumber.toLocaleString('en-IN')}`
+                            ? ` · block ${e.blockNumber.toLocaleString('en-IN')}`
                             : e.action === 'expired'
-                              ? 'ended automatically, as set when shared'
-                              : 'recorded by GrantX, not yet on the blockchain'}
+                              ? ' · ended automatically, as set when shared'
+                              : ''}
                         </p>
                       </div>
                     </li>
